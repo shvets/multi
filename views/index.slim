@@ -1,0 +1,43 @@
+    
+- max = 20
+
+javascript:
+
+  var ListView = Backbone.View.extend({
+    el: $('body'), // el attaches to existing element
+    events: {
+      'click button#add': 'addItem',
+      'click input#factor_button': 'generate'
+    },
+    initialize: function() {
+      _.bindAll(this, 'render', 'addItem'); // every function that uses 'this' as the current object should be in here
+      _.bindAll(this, 'render', 'generate');
+
+      this.counter = 0; // total number of items added thus far
+      this.render();
+    },
+
+    render: function() {
+      $(this.el).append("<button id='add'>Add list item</button>");
+      $(this.el).append("<ul></ul>");
+
+      $(this.el).append("<h1>Multiplication by factor:</h1>"); 
+      $(this.el).append("<input type='text' id='factor'/>");
+      $(this.el).append('<input type="submit" id="factor_button" value="Generate">'); 
+    },
+
+    addItem: function() {
+      this.counter++;
+      $('ul', this.el).append("<li>hello world"+this.counter+"</li>");
+    },
+
+    generate: function() {
+      $('ul', this.el).append("<li>alex</li>");
+    }
+
+  });
+
+  var listView = new ListView();      
+
+
+      
